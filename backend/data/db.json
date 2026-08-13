@@ -1,0 +1,100 @@
+{
+  "slots": [
+    {
+      "id": "2f4fbd18-e6dd-4c50-b2bb-9903762c8eaa",
+      "date": "2026-08-13",
+      "time": "09:00",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "e82851cb-8fc8-4cfb-80b9-232d544b651f",
+      "date": "2026-08-13",
+      "time": "09:30",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "8c92b74f-8b59-4b22-8665-c4a2bc715f84",
+      "date": "2026-08-13",
+      "time": "10:00",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "0e2f4454-6c51-49ff-9d93-f0f5b51d6150",
+      "date": "2026-08-13",
+      "time": "10:30",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "aa509e64-cc11-4796-bc9b-a800271d09b7",
+      "date": "2026-08-13",
+      "time": "11:00",
+      "duration": 30,
+      "status": "reservado"
+    },
+    {
+      "id": "b51a8f97-a621-4dff-81b9-db95beb110a9",
+      "date": "2026-08-13",
+      "time": "11:30",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "0cde80c4-bf33-4972-a5c7-9ffdf6bbfa70",
+      "date": "2026-08-13",
+      "time": "12:00",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "011ac880-247a-4d30-8f50-60fde4bfdad4",
+      "date": "2026-08-13",
+      "time": "12:30",
+      "duration": 30,
+      "status": "libre"
+    },
+    {
+      "id": "56b1dec7-dd0c-41ea-91a1-e7b9903cb2a9",
+      "date": "2026-08-13",
+      "time": "13:00",
+      "duration": 30,
+      "status": "libre"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "ed33f4e8-3e9a-428e-835a-8f4eabfffc93",
+      "slotId": "aa509e64-cc11-4796-bc9b-a800271d09b7",
+      "name": "pablotarin",
+      "phone": "12345678",
+      "email": "pablotarinperez@gmail.com",
+      "notes": "",
+      "serviceId": "373bfd56-986d-4e5c-b0e0-8b107f55c44b",
+      "serviceName": "Tinte",
+      "createdAt": "2026-08-13T14:23:21.999Z"
+    }
+  ],
+  "settings": {
+    "cardPaymentEnabled": false
+  },
+  "services": [
+    {
+      "id": "acc80708-0f01-43e8-a1d6-72ae550885cf",
+      "name": "Corte de pelo",
+      "price": 12
+    },
+    {
+      "id": "f32d177b-4c29-451d-ba4c-e3dab7f82f05",
+      "name": "Corte + barba",
+      "price": 18
+    },
+    {
+      "id": "373bfd56-986d-4e5c-b0e0-8b107f55c44b",
+      "name": "Tinte",
+      "price": 25
+    }
+  ]
+}

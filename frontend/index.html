@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reserva tu cita - Peluquería</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>💈 Peluquería · Reserva tu cita</h1>
+</header>
+
+<main>
+  <div class="card" id="pricesCard" style="display:none;">
+    <h2>Precios</h2>
+    <table class="services-table" id="pricesTable">
+      <tbody id="pricesTbody"></tbody>
+    </table>
+    <p class="payment-info" id="paymentInfo"></p>
+  </div>
+
+  <div class="card">
+    <h2>1. Elige un día</h2>
+    <label for="date">Fecha</label>
+    <input type="date" id="date" />
+  </div>
+
+  <div class="card">
+    <h2>2. Elige una hora disponible</h2>
+    <div id="slotsContainer" class="slots-grid">
+      <p class="empty-msg">Selecciona antes una fecha.</p>
+    </div>
+  </div>
+
+  <div class="card" id="formCard" style="display:none;">
+    <h2>3. Tus datos</h2>
+    <p class="hint">Tu cita quedará como <b>solicitud pendiente</b>: te confirmaremos por email en cuanto la aceptemos.</p>
+    <form id="bookingForm">
+      <label for="name">Nombre y apellidos *</label>
+      <input type="text" id="name" required />
+
+      <label for="phone">Teléfono *</label>
+      <input type="tel" id="phone" required />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" required />
+
+      <label for="service">Servicio deseado (opcional)</label>
+      <select id="service">
+        <option value="">Sin especificar</option>
+      </select>
+
+      <label for="notes">Notas (opcional)</label>
+      <textarea id="notes" placeholder="Ej: corte + barba"></textarea>
+
+      <div style="margin-top: 20px;">
+        <button type="submit" class="primary">Solicitar cita</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/client.js"></script>
+</body>
+</html>

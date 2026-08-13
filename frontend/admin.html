@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Panel administrador - Peluquería</title>
+<link rel="stylesheet" href="css/style.css" />
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css" rel="stylesheet" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>💈 Panel de administración</h1>
+</header>
+
+<main>
+
+  <!-- LOGIN -->
+  <div class="card login-box" id="loginBox">
+    <h2>Acceso administrador</h2>
+    <label for="adminPassword">Contraseña</label>
+    <input type="password" id="adminPassword" placeholder="Contraseña de administrador" />
+    <div style="margin-top:16px;">
+      <button class="primary" id="loginBtn">Entrar</button>
+    </div>
+    <p class="hint">Por defecto: <code>admin123</code> (cámbiala en el fichero .env del backend)</p>
+  </div>
+
+  <!-- PANEL (oculto hasta login) -->
+  <div id="panel" style="display:none;">
+
+    <div class="pending-banner" id="pendingBanner"></div>
+
+    <div class="card">
+      <h2>Generar huecos disponibles</h2>
+      <p class="hint">Elige un día y un rango horario para crear automáticamente todas las franjas cada X minutos. También puedes crear/borrar huecos sueltos directamente haciendo clic en el calendario de abajo.</p>
+      <div class="row">
+        <div>
+          <label for="genDate">Fecha</label>
+          <input type="date" id="genDate" />
+        </div>
+        <div>
+          <label for="genStart">Desde</label>
+          <input type="time" id="genStart" value="09:00" />
+        </div>
+        <div>
+          <label for="genEnd">Hasta</label>
+          <input type="time" id="genEnd" value="14:00" />
+        </div>
+        <div>
+          <label for="genDuration">Duración (min)</label>
+          <input type="number" id="genDuration" value="30" min="5" step="5" />
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="primary" id="generateBtn">Generar huecos</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Calendario</h2>
+      <div class="legend">
+        <span><span class="dot libre"></span> Libre (clic para eliminar)</span>
+        <span><span class="dot pendiente"></span> Solicitud pendiente de aceptar</span>
+        <span><span class="dot reservado"></span> Cita confirmada</span>
+      </div>
+      <p class="hint">Puedes seleccionar (arrastrar) un hueco de tiempo directamente en el calendario para crear una nueva franja libre. Las citas nunca se solapan: cada una ocupa su propia franja horaria.</p>
+      <div id="calendar"></div>
+    </div>
+
+    <div class="card">
+      <h2>Formas de pago</h2>
+      <p class="hint">Elige qué formas de pago vas a aceptar. Esto se mostrará también a los clientes en la web de reservas.</p>
+      <div class="payment-toggle">
+        <label><input type="radio" name="paymentMode" id="payCashOnly" value="cash"> Solo efectivo</label>
+        <label><input type="radio" name="paymentMode" id="payCashCard" value="cash_card"> Efectivo y tarjeta</label>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="primary" id="savePaymentBtn">Guardar</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Precios por tipo de corte / servicio</h2>
+      <p class="hint">Este listado se muestra también a los clientes en la web de reservas.</p>
+      <table class="services-table" id="servicesTable">
+        <thead>
+          <tr><th>Servicio</th><th>Precio</th><th></th></tr>
+        </thead>
+        <tbody id="servicesTbody"></tbody>
+      </table>
+
+      <div class="row" style="margin-top:18px;">
+        <div>
+          <label for="newServiceName">Nuevo servicio</label>
+          <input type="text" id="newServiceName" placeholder="Ej: Corte + barba" />
+        </div>
+        <div style="max-width:140px;">
+          <label for="newServicePrice">Precio (€)</label>
+          <input type="text" id="newServicePrice" placeholder="15" />
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <button class="primary" id="addServiceBtn">Añadir servicio</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Modal para ver detalle de reserva -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <h3>Detalle de la solicitud</h3>
+    <div id="bookingStatusBadge"></div>
+    <div class="booking-detail" id="bookingDetail"></div>
+    <div class="actions" id="modalActions">
+      <button class="secondary" id="closeModalBtn">Cerrar</button>
+      <button class="danger" id="rejectBookingBtn">Rechazar</button>
+      <button class="success" id="acceptBookingBtn">Aceptar cita</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal genérico de confirmación (sustituye a confirm()) -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal">
+    <h3 id="confirmModalTitle">Confirmar</h3>
+    <p id="confirmModalMessage"></p>
+    <div class="actions">
+      <button class="secondary" id="confirmNoBtn">Cancelar</button>
+      <button class="danger" id="confirmYesBtn">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para crear/editar un servicio (sustituye a prompt()) -->
+<div class="modal-overlay" id="serviceEditModal">
+  <div class="modal">
+    <h3>Editar servicio</h3>
+    <label for="serviceEditName">Nombre del servicio</label>
+    <input type="text" id="serviceEditName" />
+    <label for="serviceEditPrice">Precio (€)</label>
+    <input type="text" id="serviceEditPrice" />
+    <div class="actions">
+      <button class="secondary" id="serviceEditCancelBtn">Cancelar</button>
+      <button class="primary" id="serviceEditSaveBtn">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
