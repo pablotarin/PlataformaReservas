@@ -17,7 +17,7 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -42,14 +42,14 @@ header.topbar a {
   text-decoration: none;
   font-size: 14px;
   opacity: 0.9;
-  border: 1px solid rgba(255,255,255,0.6);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   padding: 6px 14px;
   border-radius: 20px;
 }
 
 header.topbar a:hover {
   opacity: 1;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 main {
@@ -64,7 +64,7 @@ main {
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 h2 {
@@ -125,16 +125,10 @@ button.primary:hover {
 button.secondary {
   background: #f1ece2;
   color: var(--text);
-  border: 0.5px solid black;
 }
 
 button.danger {
   background: var(--danger);
-  color: white;
-}
-
-button.success {
-  background: var(--success);
   color: white;
 }
 
@@ -249,9 +243,15 @@ button:disabled {
   display: inline-block;
 }
 
-.dot.libre { background: #2563eb; }
-.dot.pendiente { background: #d9a441; }
-.dot.reservado { background: #2e7d32; }
+.dot.libre {
+  background: #2563eb;
+}
+.dot.pendiente {
+  background: #d9a441;
+}
+.dot.reservado {
+  background: #2e7d32;
+}
 
 #calendar {
   margin-top: 10px;
@@ -276,7 +276,7 @@ button:disabled {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   display: none;
   align-items: center;
   justify-content: center;
@@ -416,4 +416,183 @@ table.services-table td.actions-col button {
   font-size: 14px;
   color: var(--muted);
   margin-top: 4px;
+}
+
+.account-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.account-bar a,
+.account-bar button.link-btn {
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.account-bar a:hover,
+.account-bar button.link-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.auth-tabs button {
+  flex: 1;
+  background: #f1ece2;
+  color: var(--text);
+  border-radius: 8px;
+}
+
+.auth-tabs button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.reservation-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.reservation-item .res-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.reservation-item .res-date {
+  font-weight: 700;
+}
+
+.reservation-item p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.past-booking-warning {
+  margin-top: 14px !important;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f3f3f3;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px !important;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.modal label {
+  display: block;
+  margin: 20px 0 8px;
+  font-weight: 600;
+}
+
+.modal textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-secondary,
+.btn-danger,
+.btn-cancel-booking {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: #eee;
+}
+
+.btn-danger,
+.btn-cancel-booking {
+  background: #c0392b;
+  color: white;
+}
+
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.badge-cancelada {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #f8d7da;
+  color: #842029;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cancellation-info {
+  margin-top: 15px;
+  padding: 12px 15px;
+  background: #fff4f4;
+  border-left: 4px solid #c0392b;
+  border-radius: 6px;
+}
+
+.cancellation-info p {
+  margin: 5px 0;
+}
+
+.btn-cancel-booking {
+  margin-top: 15px;
 }

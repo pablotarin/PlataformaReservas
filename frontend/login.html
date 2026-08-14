@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar sesión - Peluquería</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a
+        href="/"
+        style="
+          color: white;
+          text-decoration: none;
+          font-size: 22px;
+          font-weight: 600;
+        "
+        >💈 Peluquería</a
+      >
+    </header>
+
+    <main>
+      <div class="card login-box">
+        <div class="auth-tabs">
+          <button type="button" id="tabLogin" class="active">
+            Iniciar sesión
+          </button>
+          <button type="button" id="tabRegister">Crear cuenta</button>
+        </div>
+
+        <!-- FORMULARIO DE LOGIN -->
+        <form id="loginForm">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required />
+
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" required />
+
+          <div style="margin-top: 18px">
+            <button type="submit" class="primary" style="width: 100%">
+              Entrar
+            </button>
+          </div>
+        </form>
+
+        <!-- FORMULARIO DE REGISTRO -->
+        <form id="registerForm" style="display: none">
+          <label for="registerName">Nombre y apellidos</label>
+          <input type="text" id="registerName" required />
+
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" required />
+
+          <label for="registerPhone">Teléfono</label>
+          <input type="tel" id="registerPhone" required />
+
+          <label for="registerPassword">Contraseña (mínimo 6 caracteres)</label>
+          <input type="password" id="registerPassword" minlength="6" required />
+
+          <div style="margin-top: 18px">
+            <button type="submit" class="primary" style="width: 100%">
+              Crear cuenta
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

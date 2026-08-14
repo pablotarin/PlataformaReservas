@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis reservas - Peluquería</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a
+        href="/"
+        style="
+          color: white;
+          text-decoration: none;
+          font-size: 22px;
+          font-weight: 600;
+        "
+        >💈 Peluquería</a
+      >
+      <div class="account-bar" id="accountBar"></div>
+    </header>
+
+    <main>
+      <div class="card">
+        <h2>Mis reservas</h2>
+        <div id="reservationsContainer">
+          <p class="empty-msg">Cargando...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal de cancelación -->
+    <div id="cancelModal" class="modal-overlay">
+      <div class="modal">
+        <h3>Cancelar reserva</h3>
+
+        <p>¿Quieres cancelar esta reserva?</p>
+
+        <label for="cancelReason"> Motivo de la cancelación </label>
+
+        <textarea
+          id="cancelReason"
+          maxlength="500"
+          rows="4"
+          placeholder="Indica el motivo de la cancelación..."
+        ></textarea>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelModalClose" class="btn-secondary">
+            Volver
+          </button>
+
+          <button type="button" id="cancelConfirm" class="btn-danger">
+            Cancelar reserva
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/myreservations.js"></script>
+  </body>
+</html>
